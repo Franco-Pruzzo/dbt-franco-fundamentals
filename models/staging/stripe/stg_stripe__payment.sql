@@ -1,5 +1,5 @@
 with raw_payments as (
-    select * from `dbt-tutorial.stripe.payment`
+    select * from  {{ source('stripe', 'payment') }}
 ),
 
 renamed as (

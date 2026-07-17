@@ -4,9 +4,20 @@ sources:
   - name: jaffle_shop
     database: dbt-tutorial  # Reemplazamos 'raw' por tu base real
     schema: jaffle_shop
+    config: 
+      freshness:
+        warn_after:
+          count: 12
+          period: hour
+        error_after:
+          count: 1
+          period: day
+      loaded_at_field: _etl_loaded_at
     tables:
       - name: orders
+
       - name: customers
+        freshness: null
 
   - name: stripe
     database: dbt-tutorial  # En BigQuery siempre hay que aclarar el proyecto

@@ -10,7 +10,7 @@ renamed as (
         status as payment_status,
         -- Lo dividimos por 100 para que la cuenta final te dé exacta
         amount / 100 as payment_amount,
-        created as payment_created
+        created as created_at
     from raw_payments
 )
 

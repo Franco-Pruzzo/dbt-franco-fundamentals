@@ -17,10 +17,16 @@ sources:
       - name: orders
 
       - name: customers
-        freshness: null
+        config:
+          freshness: null
 
   - name: stripe
     database: dbt-tutorial  # En BigQuery siempre hay que aclarar el proyecto
     schema: stripe
     tables:
       - name: payment       # En BigQuery la tabla está en singular
+        config:
+          loaded_at_field: _batched_at
+          freshness:
+            warn_after: {count: 12, period: hour}
+            error_after: {count: 24, period: hour}

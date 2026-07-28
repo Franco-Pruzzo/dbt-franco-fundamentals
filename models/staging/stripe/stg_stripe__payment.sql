@@ -12,7 +12,7 @@ renamed as (
         amount / 100 as payment_amount,
         created as created_at,
         _batched_at
-
+        
     from raw_payments
 )
 

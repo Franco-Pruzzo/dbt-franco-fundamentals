@@ -4,6 +4,7 @@ sources:
   - name: jaffle_shop
     database: dbt-tutorial  # Reemplazamos 'raw' por tu base real
     schema: jaffle_shop
+    description: A clone of a Postgres application database.
     config: 
       freshness:
         warn_after:
@@ -15,16 +16,33 @@ sources:
       loaded_at_field: _etl_loaded_at
     tables:
       - name: orders
+        description: Raw orders data.
+        columns:
+          - name: id
+            description: Primary key for orders data
+            data_tests:
+              - unique
+              - not_null
 
       - name: customers
+        description: Raw customers data
         config:
           freshness: null
+        columns:
+          - name: id
+            description: Primary key for customer data
+            data_tests:
+              - unique
+              - not_null
+              
 
   - name: stripe
+    description: Raw data from the Stripe payment gateway. Contains all the company's transactional and financial information
     database: dbt-tutorial  # En BigQuery siempre hay que aclarar el proyecto
     schema: stripe
     tables:
       - name: payment       # En BigQuery la tabla está en singular
+        description: Transaction-level table that records each payment made. Includes the amount, the payment method used, and the transaction status (success or failure).
         config:
           loaded_at_field: _batched_at
           freshness:

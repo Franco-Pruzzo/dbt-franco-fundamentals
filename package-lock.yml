@@ -2,7 +2,13 @@ packages:
   - name: codegen
     package: dbt-labs/codegen
     version: 0.14.1
+  - name: audit_helper
+    package: dbt-labs/audit_helper
+    version: 0.14.0
   - name: dbt_utils
     package: dbt-labs/dbt_utils
     version: 1.4.1
-sha1_hash: ecfbf2e6369e147d1017ec3dad781aaaee247960
+  - name: snowflake_spend
+    package: gitlabhq/snowflake_spend
+    version: 1.4.0
+sha1_hash: 18d4db6c949aa9401ca3fa6b629ef550b7e23348

@@ -35,8 +35,10 @@ clean-targets: # directories to be removed by `dbt clean`
 
 models:
   dbt_franco_fundamentals:
+    +required_tests: {"unique.*|not_null": 2}  #estos tests se aplican a todos los modelos
     staging:
       +materialized: view #el signo + indica que es una propiedad y no el nombre de una tabla que esta dentro de la carpeta staging
 
     marts:
+      +required_tests: {"unique.*|not_null": 2, "relationships": 1}  #este tests se aplican solo a marts
       +materialized: table
